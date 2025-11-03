@@ -66,6 +66,7 @@ def inicio(request):
     
     return render(request, 'login.html')
 
+@login_required
 def driver_registration(request):
     return render(request, 'driver_registration.html')
 
@@ -75,6 +76,7 @@ def driver_registration(request):
 # MÓDULO: REGISTRO DE CLIENTES
 # ====================================
 
+@login_required
 def client_registration(request):
     """
     Vista que renderiza el formulario de registro de clientes.
@@ -859,6 +861,7 @@ def driver_list_api(request):
 # MÓDULO: DETALLE DE COMPAÑÍAS
 # ====================================
 
+@login_required
 def companies_list(request):
     """
     Vista que muestra el listado de todas las compañías.
@@ -868,6 +871,7 @@ def companies_list(request):
     return render(request, 'companies_list.html', {'companias': companias})
 
 
+@login_required
 def company_detail(request, company_id):
     """
     Vista que renderiza el módulo de detalle de compañía.
@@ -974,12 +978,6 @@ def company_detail_api(request, company_id):
         elif servicios_mes > 0:
             porcentaje_mes = 100
         
-        # Reportes activos (novedades pendientes o en revisión)
-        reportes_activos = Novedad.objects.filter(
-            compania=compania,
-            estado__in=['Pendiente', 'En Revisión']
-        ).count()
-        
         compania_data = {
             'id': compania.id,
             'nombre': compania.nombre,
@@ -997,8 +995,7 @@ def company_detail_api(request, company_id):
                 'servicios_realizados': servicios_realizados,
                 'empleados_activos': clientes_activos,
                 'servicios_mes': servicios_mes,
-                'porcentaje_mes': round(porcentaje_mes, 1),
-                'reportes_activos': reportes_activos
+                'porcentaje_mes': round(porcentaje_mes, 1)
             }
         }
         

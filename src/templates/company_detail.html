@@ -39,7 +39,7 @@
     <!-- Contenido Principal -->
     <main class="container mx-auto px-6 py-8">
         <!-- Cards de Métricas -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             <!-- Total de Viajes -->
             <div class="bg-white rounded-lg shadow-md p-6">
                 <div class="flex items-center justify-between">
@@ -81,19 +81,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Reportes Activos -->
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-gray-600 text-sm font-medium">Reportes Activos</p>
-                        <p class="text-3xl font-bold text-orange-600" id="metric-reportes">0</p>
-                    </div>
-                    <div class="bg-orange-100 rounded-full p-3">
-                        <i class="fas fa-exclamation-triangle text-orange-600 text-2xl"></i>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <!-- Sistema de Pestañas -->
@@ -117,7 +104,7 @@
                         class="tab-button py-4 px-6 text-center border-b-2 font-medium text-sm focus:outline-none transition-colors"
                         data-tab="reportes"
                     >
-                        <i class="fas fa-file-excel mr-2"></i>Generar Reportes
+                        <i class="fas fa-file-excel mr-2"></i>Exportar Reportes
                     </button>
                 </nav>
             </div>
@@ -190,9 +177,9 @@
                     </div>
                 </div>
 
-                <!-- Pestaña: Generar Reportes -->
+                <!-- Pestaña: Exportar Reportes -->
                 <div id="tab-reportes" class="tab-content hidden">
-                    <h2 class="text-xl font-bold text-gray-800 mb-6">Generar Reportes</h2>
+                    <h2 class="text-xl font-bold text-gray-800 mb-6">Exportar Reportes a Excel</h2>
                     <div class="max-w-2xl mx-auto">
                         <div class="space-y-6">
                             <!-- Tipo de Reporte -->
@@ -234,35 +221,15 @@
                                 <p class="text-sm text-gray-700" id="description-text"></p>
                             </div>
 
-                            <!-- Botones de Acción -->
-                            <div class="flex space-x-4">
-                                <button 
-                                    id="btn-generate-report" 
-                                    class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
-                                    disabled
-                                >
-                                    <i class="fas fa-chart-bar mr-2"></i>Generar Reporte
-                                </button>
+                            <!-- Botón de Acción -->
+                            <div>
                                 <button 
                                     id="btn-export-excel" 
-                                    class="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+                                    class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
                                     disabled
                                 >
                                     <i class="fas fa-file-excel mr-2"></i>Exportar a Excel
                                 </button>
-                            </div>
-                        </div>
-
-                        <!-- Resultado del Reporte -->
-                        <div id="report-result" class="mt-8 hidden">
-                            <div class="bg-white border border-gray-300 rounded-lg p-4">
-                                <div class="flex justify-between items-center mb-4">
-                                    <h3 class="text-lg font-bold text-gray-800">Resultado del Reporte</h3>
-                                    <span id="report-count" class="text-sm text-gray-600">0 registros</span>
-                                </div>
-                                <div id="report-table-container" class="overflow-x-auto max-h-96">
-                                    <!-- La tabla se generará aquí -->
-                                </div>
                             </div>
                         </div>
                     </div>
